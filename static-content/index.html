@@ -6,7 +6,7 @@
 <script src = "https://unpkg.com/react@15.3.1/dist/react.js"></script>
 <script src = "https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
 <script src = "https://unpkg.com/babel-standalone@6/babel.js"></script>
-<script src = "https://code.jquery.com/jquery-3.2.1.min.js"><</script>
+<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
  href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
 </head>
@@ -56,6 +56,23 @@ class App extends React.Component{
 	render(){
 		return (
 		<div>
+				<br/>
+				<br/>
+				<button className="btn btn-primary" onClick={ (e) => {this.setState({showForm: true})}}> Create new </button>
+				<br/>
+				<br/>
+				{ this.state.showForm && (
+					<div>
+						<div className="input-group">
+							<label> Content </label>
+							<input type = "text" className= "form-control" 
+								onChange={ (e) => this.setState({formData: {content: e.target.value}}) } />
+						</div>
+							<br/>
+							<button className= "btn btn-primary" onClick = {this.createEntry}>Save</button>
+					</div>
+					)
+				}
 			<table className="table table-striped table-condensed">
 				<thead>
 					<tr>
@@ -73,23 +90,8 @@ class App extends React.Component{
 					})
 				}
 			</tbody>
-	</table>
-	<br/>
-	<br/>
-	<button className="btn btn-primary" onClick={ (e) => {this.setState({showForm: true})}}> Create new </button>
-	<br/>
-	<br/>
-	{ this.state.showForm && (
-		<div>
-			<div className="input-group">
-				<label> Content </label>
-				<input type = "text" className= "form-control" 
-					onChange={ (e) => this.setState({formData: {content: e.target.value}}) } />
-			</div>
-				<br/>
-				<button className= "btn btn-primary" onClick = {this.createEntry}>Save</button>
-		</div>
-		)}
+			</table>
+
 	</div>
 	)
 	}
